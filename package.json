@@ -1,0 +1,33 @@
+{
+  "main": "./app/index.html",
+  "name": "Cowdown",
+  "description": "Talk About Anything",
+  "version": "0.1.0",
+  "keywords": [
+    "cowdown",
+    "markdown",
+    "node-webkit"
+  ],
+  "window": {
+    "title": "Cowdown",
+    "icon": "./app/assets/images/cowdown.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 800,
+    "height": 500,
+    "position": "mouse",
+    "min_width": 400,
+    "min_height": 200
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-shell": "^0.2.9",
+    "node-webkit-builder": "^0.1.2",
+    "gulp-util": "~3.0.0",
+    "rimraf": "~2.2.8"
+  }
+}
