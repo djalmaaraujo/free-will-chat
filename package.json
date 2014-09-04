@@ -13,16 +13,19 @@
     "icon": "./app/assets/images/freewill.png",
     "toolbar": true,
     "frame": true,
-    "width": 800,
-    "height": 500,
+    "width": 1024,
+    "height": 768,
     "position": "mouse",
-    "min_width": 400,
-    "min_height": 200
+    "min_width": 1024,
+    "min_height": 768
   },
   "webkit": {
     "plugin": true
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "socket.io": "^1.1.0"
+  },
   "devDependencies": {
     "gulp": "^3.8.7",
     "gulp-shell": "^0.2.9",
