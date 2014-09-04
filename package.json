@@ -1,16 +1,16 @@
 {
   "main": "./app/index.html",
-  "name": "Cowdown",
+  "name": "freewill",
   "description": "Talk About Anything",
   "version": "0.1.0",
   "keywords": [
-    "cowdown",
-    "markdown",
+    "freewill",
+    "chat",
     "node-webkit"
   ],
   "window": {
-    "title": "Cowdown",
-    "icon": "./app/assets/images/cowdown.png",
+    "title": "freewill",
+    "icon": "./app/assets/images/freewill.png",
     "toolbar": true,
     "frame": true,
     "width": 800,
