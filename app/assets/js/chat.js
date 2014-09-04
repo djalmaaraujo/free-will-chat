@@ -1,16 +1,21 @@
 $(function () {
   var socket            = io.connect('http://127.0.0.1:8009');
   var $chatRoomMessages = $(".chat-room-messages");
-  var userName          = localStorage.getItem('chat_userName');
+
+  var getUserName = function () {
+    return localStorage.getItem('chat_userName');
+  };
 
   var updateScroll = function () {
     $chatRoomMessages.scrollTop($chatRoomMessages[0].scrollHeight);
   };
 
   var startChat = function () {
+    socket.emit('setName', { name: getUserName() })
     $('.wrapper').removeClass('disabled');
     $('.dialogs-container').addClass('hide');
     $('.chat-txt input').focus();
+    updateScroll();
   };
 
   var addMessage = function (message) {
@@ -73,9 +78,17 @@ $(function () {
     updateScroll();
   });
 
-  if (userName) {
-    socket.emit('setName', { name: userName })
+  if (getUserName()) {
     startChat();
   }
-  updateScroll();
+
+  // Login
+  $('.insert-your-name-form').on('submit', function (e) {
+    e.preventDefault();
+
+    var name = $(this).find('input').val();
+    localStorage.setItem('chat_userName', name);
+
+    startChat();
+  });
 });
