@@ -102,6 +102,14 @@ body {
   border-bottom: 1px solid #eaebee;
 }
 
+.message-box.logout {
+  background: #FFEDEB;
+}
+.message-box.joined {
+  background: #E5FFFD;
+}
+.message-box.message {}
+
 .message-box .user-name,
 .message-box .message,
 .message-box .when {
@@ -116,10 +124,10 @@ body {
   width: 15vw;
 }
 .message-box .message {
-  width: 85vw;
+  width: 80vw;
 }
 .message-box .when {
-  width: 5vw;
+  width: 10vw;
   color: #d4d3d3;
 }
 

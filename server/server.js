@@ -13,6 +13,7 @@ io.sockets.on('connection', function (socket) {
     CLIENTS.push(client);
 
     io.sockets.emit('joined', { client: client, clients: CLIENTS });
+    socket.emit('welcome', {success: true});
     console.log('User connected: ' + client.name);
   });
 
@@ -25,7 +26,6 @@ io.sockets.on('connection', function (socket) {
   socket.on('disconnect', function () {
     var client = getClient(socket.id);
     _.remove(CLIENTS, function(cli) { return cli.id == socket.id; } );
-
     io.sockets.emit('logout', { client: client, clients: CLIENTS });
   });
 });
