@@ -1,5 +1,5 @@
 $(function () {
-  var socket            = io.connect('http://127.0.0.1:8009');
+  var socket            = io.connect('http://pian.in:8009');
   var $chatRoomMessages = $(".chat-room-messages");
   var $inputChat = $('.chat-form input');
 
