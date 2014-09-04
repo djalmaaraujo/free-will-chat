@@ -1,6 +1,7 @@
 $(function () {
   var socket            = io.connect('http://127.0.0.1:8009');
   var $chatRoomMessages = $(".chat-room-messages");
+  var $inputChat = $('.chat-form input');
 
   var getUserName = function () {
     return localStorage.getItem('chat_userName');
@@ -45,7 +46,7 @@ $(function () {
 
   socket.on('joined', function (data) {
     addMessage({
-      user: data.client.name,
+      user: data.client[0].name,
       text: 'Joined the room',
       time: new Date(),
       class: 'joined'
@@ -67,9 +68,9 @@ $(function () {
     updateScroll();
   })
 
-  socket.on('message', function (data) {
+  socket.on('chat', function (data) {
     addMessage({
-      user: data.client.name,
+      user: data.client[0].name,
       text: data.message,
       time: new Date(),
       class: 'message'
@@ -90,5 +91,18 @@ $(function () {
     localStorage.setItem('chat_userName', name);
 
     startChat();
+  });
+
+  // Send Messages
+  $inputChat.on('keypress', function (e) {
+    if (e.which == 13) {
+      e.preventDefault();
+
+      if ($inputChat.val()) {
+        socket.emit('chat', { message: $inputChat.val() });
+
+        $inputChat.val('');
+      }
+    }
   });
 });

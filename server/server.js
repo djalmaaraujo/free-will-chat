@@ -12,15 +12,14 @@ io.sockets.on('connection', function (socket) {
     var client = {id: socket.id, name: data.name};
     CLIENTS.push(client);
 
-    io.sockets.emit('joined', { client: client, clients: CLIENTS });
-    socket.emit('welcome', {success: true});
+    io.sockets.emit('joined', { client: [client], clients: CLIENTS });
     console.log('User connected: ' + client.name);
   });
 
-  socket.on('message', function (data) {
+  socket.on('chat', function (data) {
     var client = getClient(socket.id);
 
-    io.sockets.emit('message', {client: client, message: data.message});
+    io.sockets.emit('chat', { client: client, message: data.message });
   });
 
   socket.on('disconnect', function () {
