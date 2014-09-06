@@ -9,6 +9,9 @@ Single server, single room (for now). Talk about anything you want. No rules.
 - Windows: [Download](http://)
 - Linux64: [Download](http://)
 
+## Icon
+[Free Icon Finder](https://www.iconfinder.com/icons/211085/bubble_chat_comment_discuss_message_speech_voice_icon#size=128)
+
 ## License
 [MIT License](http://djalmaaraujo.mit-license.org)
 

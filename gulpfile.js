@@ -11,7 +11,7 @@ gulp.task('build', ['clean'], function() {
     appVersion: pkg.version,
     buildDir: 'dist',
     files: ['package.json', 'app/**'],
-    macIcns: 'build/nw.icns',
+    macIcns: 'cache/nw.icns',
     platforms: ['win','osx', ',linux32', 'linux64'],
     version: '0.10.1'
   });
