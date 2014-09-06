@@ -5,9 +5,9 @@ A cross-platform Web Chat.
 Single server, single room (for now). Talk about anything you want. No rules.
 
 ## Desktop Apps
-- OSX: [Download](http://)
-- Windows: [Download](http://)
-- Linux64: [Download](http://)
+- OSX: [Download](https://dl.dropboxusercontent.com/u/1333861/freewill/osx.zip)
+- Windows: [Download](https://dl.dropboxusercontent.com/u/1333861/freewill/win.zip)
+- Linux64: [Download](https://dl.dropboxusercontent.com/u/1333861/freewill/linux64.zip)
 
 ## Icon
 [Free Icon Finder](https://www.iconfinder.com/icons/211085/bubble_chat_comment_discuss_message_speech_voice_icon#size=128)
