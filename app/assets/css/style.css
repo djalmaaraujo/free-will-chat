@@ -55,7 +55,31 @@ body {
 
 .chat-room header {
   background: #41CAC0;
+  display: flex;
+  height: 42px;
 }
+
+.header-text {
+  width: 50vw;
+}
+
+.header-action {
+  width: 50vw;
+  text-align: right;
+}
+
+.header-action button {
+  padding: 5px 10px;
+  font-size: 12px;
+  text-align: center;
+  font-weight: normal;
+  background: #00A8B3;
+  border: none;
+  width: 60px;
+  position: relative;
+  top: -3px;
+}
+
 .online-users {
   width: 200px;
   background: #e5e8ef;
@@ -95,6 +119,7 @@ body {
 .chat-room-messages {
   flex: 1;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .message-box {
@@ -176,6 +201,10 @@ button {
   background: #41CAC0;
 }
 
+.dialog-name-loading {
+  color: white;
+}
+
 .dialog-name h2 {
   color: white;
 }
@@ -194,4 +223,8 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 2;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

@@ -27,6 +27,12 @@ io.sockets.on('connection', function (socket) {
     _.remove(CLIENTS, function(cli) { return cli.id == socket.id; } );
     io.sockets.emit('logout', { client: client, clients: CLIENTS });
   });
+
+  socket.on('logout', function () {
+    var client = getClient(socket.id);
+    _.remove(CLIENTS, function(cli) { return cli.id == socket.id; } );
+    io.sockets.emit('logout', { client: client, clients: CLIENTS });
+  });
 });
 
 console.log(' ### FREE WILL CHAT ###')

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="freewill">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,56 +11,66 @@
     <link href="assets/css/style.css" rel="stylesheet">
   </head>
 
-  <body>
-    <section class="dialogs-container">
-      <section class="dialog dialog-name">
-        <h2>Please, type your name:</h2>
-        <form class="insert-your-name-form">
+  <body ng-controller="UserController as user" ng-cloak>
+    <section class="dialogs-container" ng-show="user.dialogOn">
+      <section class="dialog dialog-name" ng-show="!user.isValid">
+        <div ng-show="!user.setNameForm" class="dialog-name-loading">
+          <p>Checking for your data...</p>
+        </div>
+
+        <div class="user-form" ng-show="user.setNameForm">
+          <h2>Please, type your name:</h2>
           <div class="chat-txt">
-            <input type="text" class="form-control" autocomplete="off" required />
+            <input ng-model="user.userName" type="text" class="form-control" autocomplete="off" ng-enter="user.setName()" />
           </div>
-          <button class="btn btn-danger" type="submit">Send</button>
-        </form>
+          <button class="btn btn-danger" type="submit" ng-click="user.setName()">Send</button>
+        </div>
       </section>
     </section>
 
-    <section class="wrapper disabled">
+    <section class="wrapper ng-class: {disabled: !user.isValid};">
       <section class="online-users">
         <header>People</header>
         <ul class="online-users-list">
-
+          <li data-id="{{client.id}}" ng-repeat="client in user.clients">{{client.name}}</li>
         </ul>
       </section>
 
-      <section class="chat-room">
-        <header>Room</header>
+      <section class="chat-room" ng-controller="MessageController as chat">
+        <header>
+          <div class="header-text">Room</div>
+          <div class="header-action">
+            <button ng-click="user.logout()">Logout</button>
+          </div>
+        </header>
 
         <section class="chat-room-messages">
+          <div class="message-box">
+            <div class="user-name">Welcome!</div>
+            <div class="message">This is Free Will Chat! :)</div>
+            <div class="when"></div>
+          </div>
 
+          <div class="message-box {{message.class}}" ng-repeat="message in chat.messages">
+            <div class="user-name">{{message.name}}</div>
+            <div class="message">{{message.message}}</div>
+            <div class="when">{{message.time}}</div>
+          </div>
         </section>
 
         <footer class="chat-form">
           <div class="chat-txt">
-            <input type="text" class="form-control" tabindex="1" />
+            <input type="text" class="form-control" tabindex="1" ng-model="chat.newMessage" ng-enter="chat.sendMessage()" />
           </div>
-          <button class="btn btn-danger" tabindex="2">Send</button>
+          <button tabindex="2" ng-click="chat.sendMessage()">Send</button>
         </footer>
       </section>
     </section>
 
-    <script id="message-template" type="text/x-handlebars-template">
-      <div class="message-box {{class}}">
-        <div class="user-name odd">{{name}}</div>
-        <div class="message">{{message}}</div>
-        <div class="when">{{time}}</div>
-      </div>
-    </script>
-
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/handlebars/handlebars.min.js"></script>
-    <script type="text/javascript" src="bower_components/lodash/dist/lodash.compat.min.js"></script>
-    <script type="text/javascript" src="bower_components/moment/min/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="http://pian.in:8009/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="assets/js/chat.js"></script>
+    <script src="http://pian.in:8009/socket.io/socket.io.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-socket-io/socket.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
