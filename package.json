@@ -11,7 +11,7 @@
   "window": {
     "title": "freewill",
     "icon": "./app/assets/images/freewill.png",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 1024,
     "height": 768,
