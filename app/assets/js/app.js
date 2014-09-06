@@ -1,9 +1,16 @@
-var app = angular.module('freewill', ['btford.socket-io']);
+var app = angular.module('freewill', ['btford.socket-io', 'angularMoment']);
 
 app.factory('socketServer', function (socketFactory) {
   return socketFactory({
     ioSocket: io.connect('http://pian.in:8009')
   });
+});
+
+app.filter('convertToHour', function () {
+  return function (input) {
+    var date = new Date(input);
+    return date.getHours() + ':' + date.getMinutes()
+  }
 });
 
 app.factory('userInfo', function () {

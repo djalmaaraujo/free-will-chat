@@ -54,7 +54,7 @@
           <div class="message-box {{message.class}}" ng-repeat="message in chat.messages">
             <div class="user-name">{{message.name}}</div>
             <div class="message">{{message.message}}</div>
-            <div class="when">{{message.time}}</div>
+            <div class="when">{{message.time | convertToHour}}</div>
           </div>
         </section>
 
@@ -71,6 +71,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-socket-io/socket.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>
